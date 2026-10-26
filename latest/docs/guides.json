@@ -63,6 +63,18 @@
           ]
         },
         {
+          "id": "options",
+          "title": "Command-line options",
+          "desc": "every option of the broker, of each plugin, of coraine-import and coraine-build - short form, environment variable, type, default, values, what it does",
+          "from": [
+            {
+              "repo": "coraine",
+              "path": "doc/options.md",
+              "at": "733711b9"
+            }
+          ]
+        },
+        {
           "id": "building",
           "title": "Building from source",
           "desc": "the libraries, the make targets, coraine-build, the feature switches and the HTTP server",
@@ -431,6 +443,28 @@
               "repo": "coraine",
               "path": "doc/spec-coverage-gaps.md",
               "at": "16489106"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Where coraine is going",
+      "items": [
+        {
+          "id": "roadmap",
+          "title": "Roadmap",
+          "desc": "what is available now, and what is planned - short, medium and long term",
+          "from": [
+            {
+              "repo": "coraine",
+              "path": "doc/roadmap.md",
+              "at": "733711b9"
+            },
+            {
+              "repo": "coraine",
+              "path": "doc/ideas.md",
+              "at": "733711b9"
             }
           ]
         }
