@@ -89,7 +89,7 @@ it, is in <a href="https://github.com/SEAMWARE/coraine/blob/main/doc/ideas.md">I
   <code>--fdscNgsild</code>, notifications decided for the subscription's owner; the ODRL-PAP's <code>/policy</code> API
   served by the broker (<code>--policyApiPort</code>) (<a href="#docs/authorization">Authorization</a>).</li>
   <li><b>The CKAN bridge and DataChannels</b> - a CKAN portal's DataStore resources read into entities
-  (<code>ckan.so</code>, <a href="https://github.com/SEAMWARE/corCkanBridge">corCkanBridge</a>); a DataChannel makes each record (a row) into the entities its mapping names
+  (<code>ckan.so</code>, <a href="https://github.com/SEAMWARE-cor/corCkanBridge">corCkanBridge</a>); a DataChannel makes each record (a row) into the entities its mapping names
   (<a href="https://github.com/SEAMWARE/coraine/blob/main/doc/bridge-channels.md#datachannels">DataChannels</a>). A
   bridge reports a Channel's status, and why, at any time (<code>channelStatusIn</code>).</li>
   <li><b><a href="https://github.com/SEAMWARE/c3">c³</a>, the coraine Control Center - Compile</b> - a broker built for a deployment from a web page: the features
@@ -113,7 +113,7 @@ it, is in <a href="https://github.com/SEAMWARE/coraine/blob/main/doc/ideas.md">I
   (<a href="#docs/performance/stored-trees">Performance - The stored trees</a>).</li>
   <li><b>The OPC UA bridge</b> - Variables as attributes, Methods as Service Executions, the server's node tree as the
   bridge's inventory, SignAndEncrypt with certificates (<code>--bridges opcua</code>,
-  <a href="https://github.com/SEAMWARE/corOpcuaBridge">corOpcuaBridge</a>).</li>
+  <a href="https://github.com/SEAMWARE-cor/corOpcuaBridge">corOpcuaBridge</a>).</li>
   <li><b>The FIWARE IoT Agents as bridge plugins - prototypes</b> - JSON, UltraLight 2.0, LwM2M, LoRaWAN, Sigfox and
   ISOXML, each a public repository of its own (corIota*Bridge); OPC UA is the OPC UA bridge
   (<a href="#docs/iot-agents">FIWARE IoT Agents</a>).</li>
@@ -141,6 +141,11 @@ it, is in <a href="https://github.com/SEAMWARE/coraine/blob/main/doc/ideas.md">I
   (<code>/admin/bridges/{bridge}/inventory</code>), with the DDS domain, the transport (UDP or shared memory) and the
   network interfaces to reach it; it writes the mapping file and the default user @context, and starts a broker with
   them (<a href="#docs/dds">DDS and ROS 2</a>).</li>
+  <li><b>c³: the OPC UA mapping tool</b> - an OPC UA server's Variables to attributes of entities and its Objects to
+  models (AssetChannels), the DDS tool's layout: in Operate and from Compile's Bridges, made from the opcua bridge's
+  inventory, the whole address space read at once, with the server's security and user; it writes the bridge
+  configuration and the default user @context, and starts a broker with them
+  (<a href="#docs/c3/opcua-mapper">the OPC UA mapper</a>).</li>
   <li><b>Subordinate subscriptions follow a registration's PATCH</b> (§ 10.5.2.4) - created, PATCHed, moved to the
   new endpoint or deleted as the registration changes (<code>--distributed</code>,
   <a href="#docs/options/distributed-ops">Command-line options - Distributed operations</a>).</li>
@@ -170,8 +175,8 @@ implements its own objects now and adapts to whatever TC DATA settles on.</p>
   for the other: fewer threads, no per-thread caches in the tree heap, a smaller log allocated ahead, scans instead of
   indexes. For a broker with few requests on the cheapest hardware; where its RAM goes is measured first, and the
   resident set at a few store sizes is documented.</li>
-  <li><b>c³: the OPC UA mapping tool</b> - OPC UA variables, monitored items and methods to entities and attributes,
-  the same tool as for DDS: in Operate, and from Compile's Bridges, made from the OPC UA bridge's inventory
+  <li><b>c³: OPC UA methods in the mapper</b> - an Object's methods as the Service Registrations of its entity
+  (<code>opcua://&lt;Object&gt;/&lt;method&gt;</code>), made by the OPC UA mapper instead of by hand
   (<a href="https://github.com/SEAMWARE/coraine/blob/main/doc/ideas.md#c-the-coraine-control-center">more</a>).</li>
   <li><b>Live public transport: a GTFS-realtime bridge, and buses moving in c³</b> - a transit agency's routes (a
   <code>LineString</code> each), stops and trips from its static GTFS; its vehicles' live positions (GTFS-realtime,
@@ -227,7 +232,7 @@ implements its own objects now and adapts to whatever TC DATA settles on.</p>
 timeframe; they are here so that potential contributors can see where the product is heading and may wish to get
 involved.</p>
 <ul>
-  <li><b><a href="https://github.com/SEAMWARE/corDB">corDB</a> standalone</b> - corDB as a server of its own beside the brokers, for high availability (the haaux
+  <li><b><a href="https://github.com/SEAMWARE-cor/corDB">corDB</a> standalone</b> - corDB as a server of its own beside the brokers, for high availability (the haaux
   role), with backups of current state and history
   (<a href="https://github.com/SEAMWARE/coraine/blob/main/doc/ideas.md#cordb-standalone---and-as-haaux">more</a>).</li>
   <li><b>Our own string collation, replacing ICU</b> - root collation without 39&nbsp;MiB of libicu
